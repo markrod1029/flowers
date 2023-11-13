@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+      
+
+        #letter {
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #FFFFFF;
+            font-size: 30px;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+        }
+    </style>
+    <title>Typing Animation</title>
+</head>
+<body class="" data-new-gr-c-s-check-loaded="14.1130.0" data-gr-ext-installed="">
+    <div class="night"></div>
+    <div class="flowers">
+
+<div id="letter-container">
+    <p id="letter"></p>
+</div>
+
+
+</div>
+
+<script>
+const messages = [
+    "Hi Pandak!!,",
+    "Kamusta ka na? Sana okay ka lang palagi. Alam mo naman, nandito lang ako lage para sa'yo.",
+    "Grabe, ang tagal na natin magkakilala, no? Parang kahapon lang.",
+    "Kaso hindi lang nag kikita haha sarap mo kasi batukan",
+    "Saka, alam ko na tawag kita'y 'pandak, istick, payat at iba pa ahhaha' pero alam mo namang biro lang yun,",
+    "gusto ko lang sanang malaman mo na laging andiyan ang kaibigan mo para makinig, kahit anong meron ka",
+    "Ingat ka palagi ha, at sana maging masaya ka lagi.",
+    "Alam mo naman, importante sa'kin yung kasiyahan mo.",
+    "Kung kailangan mo ng kahit ano, sabihin mo lang. Anjan ako para suportahan ka.",
+
+    "A, tungkol dun sa birthday mo Dati na hindi ko binigay ahaha,",
+    "ito yun kaso mahilig ka sa letter kahit panget sulat ko kaya hindi ko binigay to ano yun dalawa",
+    "kaya hindi kuna binigay to at yung iba mahilig kasi ako sa technology",
+    "kaya puro ganto hahaha",
+    "Ingat ka palagi, Maricris. Sana maging maganda ang araw mo.hnd lang ngayon dapat araw araw. ",
+    "huli na yung bulaklak dito hindi nabubulok kay tago mo lang haahaha pero pag nakalimutan mo yung link babye na",
+
+
+];
+
+let messageIndex = 0;
+let letterIndex = 0;
+let letterElement = document.getElementById("letter");
+
+function typeLetter() {
+    letterElement.innerHTML += messages[messageIndex].charAt(letterIndex);
+    letterIndex++;
+
+    if (letterIndex === messages[messageIndex].length) {
+        // Message complete, wait for a moment and then clear the message
+        setTimeout(clearMessage, 2000);
+    } else {
+        setTimeout(typeLetter, 50); // Adjust the typing speed (milliseconds)
+    }
+}
+
+function clearMessage() {
+    // Clear the current message
+    letterElement.innerHTML = "";
+
+    // Move to the next message (if available)
+    messageIndex++;
+
+    if (messageIndex < messages.length) {
+        // Reset letterIndex and start typing the next message after a delay
+        letterIndex = 0;
+        setTimeout(typeLetter, 1000);
+    } else {
+        // All messages are completed, redirect to another page
+        window.location.href = "flower.html"; // Replace with the target page URL
+    }
+}
+
+// Start the initial typing
+typeLetter();
+</script>
+
+</body>
+</html>
