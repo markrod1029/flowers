@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css"/>
     <style>
-        body {
+     body {
             font-family: Arial, sans-serif;
             margin: 0;
             display: flex;
@@ -15,18 +15,36 @@
             overflow: hidden;
         }
 
-      
+        #letter-container {
+            position: relative;
+            max-width: 600px; /* Set your desired maximum width */
+        }
 
         #letter {
-            white-space: nowrap;
+            white-space: pre-wrap; /* Allow wrapping within words */
             overflow: hidden;
-            border-right: 2px solid #FFFFFF;
             font-size: 30px;
             color: #FFFFFF;
             margin: 0;
             padding: 0;
             display: inline-block;
         }
+
+        #letter-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #FFFFFF;
+        }
+        @media (max-width: 768px) {
+            #letter {
+                font-size: 25px; /* Adjust the font size for smaller screens */
+            }
+        }
+     
     </style>
     <title>Typing Animation</title>
 </head>
