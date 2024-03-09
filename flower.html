@@ -306,15 +306,35 @@
         </div>
       </div>
     </div>
+<div id="countdownDate"></div>
   
+    <script>   
+      // Kung ang pahina ay nag-load, alisin ang "not-loaded" class matapos ang 1 segundo
+      onload = () => {
+          const c = setTimeout(() => {
+              document.body.classList.remove("not-loaded");
+              clearTimeout(c);
+          }, 1000);
+      };
 
-<script>   
-onload = () => {
-  const c = setTimeout(() => {
-    document.body.classList.remove("not-loaded");
-    clearTimeout(c);
-  }, 1000);
-};
-</script>
+      // Itakda ang countdown date (sa halimbawang ito, itinakda ito sa 10 segundo)
+      var countdownDate = new Date().getTime() + (3 * 60 * 1000); // 3 minutes in milliseconds
 
-</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+      // I-update ang countdown kada segundo
+      var countdown = setInterval(function() {
+          // Kumuha ng kasalukuyang petsa at oras
+          var now = new Date().getTime();
+
+          // Kalkulahin ang natitirang oras
+          var distance = countdownDate - now;
+
+          // Kalkulahin ang segundo
+          var seconds = Math.floor(distance / 1000);
+
+          // Kung ang countdown ay tapos na, ilipat sa ibang pahina
+          if (seconds < 0) {
+              clearInterval(countdown); // Patakasin ang countdown interval
+              window.location.href = "letter.html"; // Palitan ang URL ng target na pahina
+          }
+      }, 1000);
+  </script>
